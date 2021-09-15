@@ -53,6 +53,7 @@ public class UserMapperTest {
         user.setCreateTime(new Date());
 
         int rows = userMapper.insertUser(user);
+
         System.out.println(rows);
         User testUser = userMapper.selectByName("xiaoyang");
         System.out.println(testUser.getId());
@@ -77,5 +78,20 @@ public class UserMapperTest {
             System.out.println(post);
         }
         System.out.println(discussPostMapper.selectDiscussPostRows(0));
+    }
+
+    @Test
+    public void testInsertUserId() {
+        User user = new User();
+        user.setUsername("kobe");
+        user.setPassword("123456");
+        user.setSalt("abc");
+        user.setEmail("basketball@love.com");
+        user.setHeaderUrl("http://www.nowcoder.com/108.png");
+        user.setCreateTime(new Date());
+
+        int rows = userMapper.insertUser(user);
+        System.out.println(user.getId());
+        System.out.println(rows);
     }
 }
