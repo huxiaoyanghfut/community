@@ -83,10 +83,10 @@ public class UserMapperTest {
     @Test
     public void testInsertUserId() {
         User user = new User();
-        user.setUsername("kobe");
-        user.setPassword("123456");
+        user.setUsername("kobe1");
+        user.setPassword("1234567");
         user.setSalt("abc");
-        user.setEmail("basketball@love.com");
+        user.setEmail("basketball1@love.com");
         user.setHeaderUrl("http://www.nowcoder.com/108.png");
         user.setCreateTime(new Date());
 
