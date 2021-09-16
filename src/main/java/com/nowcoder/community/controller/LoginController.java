@@ -129,6 +129,7 @@ public class LoginController implements CommunityConstant {
             cookie.setPath(contextPath);
             cookie.setMaxAge(expiredSeconds);
             response.addCookie(cookie);
+            //转发解决的是一次请求内部的跳转，重定向是两次请求之间的跳转
             return "redirect:/index";
         } else {//登陆失败
             model.addAttribute("usernameMsg", map.get("usernameMsg"));
