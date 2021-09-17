@@ -47,7 +47,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
         return true;
     }
 
-    // 在Controller之后执行
+    // 在Controller之后执行，在TemplateEngine之前执行
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         User user = hostHolder.getUser();
