@@ -6,6 +6,7 @@ import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.CommunityConstant;
+import com.nowcoder.community.util.HostHolder;
 import com.nowcoder.community.util.MailClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import java.net.PasswordAuthentication;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +43,9 @@ public class UserService implements CommunityConstant{
 
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private HostHolder hostHolder;
 
     @Value("${community.path.domain}")
     private String domain;
@@ -172,6 +177,43 @@ public class UserService implements CommunityConstant{
 
     public LoginTicket findLoginTicket(String ticket) {
         return loginTicketMapper.selectByTicket(ticket);
+    }
+
+    //修改密码
+    public Map<String, Object> updatePassword(String oldPassword, String newPassword, String newPasswordConfirm) {
+        Map<String, Object> map = new HashMap<>();
+        //原密码判空
+        if (StringUtils.isBlank(oldPassword)){
+            map.put("oldPasswordMsg", "请输入原始密码！");
+            return map;
+        }
+
+        if (StringUtils.isBlank(newPassword)){
+            map.put("newPasswordMsg", "请输入新密码！");
+            return map;
+        }
+
+        if (newPassword.length() < 8){
+            map.put("newPasswordMsg", "新密码长度不能小于8位！");
+            return map;
+        }
+        if (!newPassword.equals(newPasswordConfirm)){
+            map.put("newPasswordMsg", "两次输入密码不一致！");
+            return map;
+        }
+        //原密码校验
+        //获取当前用户
+        User currentUser = hostHolder.getUser();
+        oldPassword = CommunityUtil.md5(oldPassword + currentUser.getSalt());
+        if (!oldPassword.equals(currentUser.getPassword())){
+            map.put("oldPasswordMsg", "请输入正确的原始密码！");
+            return map;
+        }
+        //修改密码，将数据库中用户的旧密码修改为新密码
+        map.put("salt",currentUser.getSalt());
+        newPassword =  CommunityUtil.md5(newPassword + currentUser.getSalt());
+        userMapper.updatePassword(currentUser.getId(), newPassword);
+        return map;
     }
 
 

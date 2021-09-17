@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 /**
  * @author:xiaoyang
@@ -117,6 +118,20 @@ public class UserController {
             logger.error("读取头像失败: " + e.getMessage());
         }
     }
+
+    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    public String updatePassword(String oldPassword, String newPassword, String confirmPassword, Model model) {
+        Map<String, Object> map = userService.updatePassword(oldPassword, newPassword, confirmPassword);
+        if (map.containsKey("salt")){
+            model.addAttribute("success", "修改成功！");
+            return "/site/setting";
+        }else{
+            model.addAttribute("oldPasswordMsg", map.get("oldPasswordMsg"));
+            model.addAttribute("newPasswordMsg", map.get("newPasswordMsg"));
+        }
+        return "/site/setting";
+    }
+
 
 
 }
