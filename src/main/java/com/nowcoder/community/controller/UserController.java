@@ -110,7 +110,7 @@ public class UserController {
         try (   //从本地读图片文件
                 FileInputStream fis = new FileInputStream(fileName);
                 OutputStream os = response.getOutputStream();
-        ) {//将数据写到response的buffer数组中
+        ){//将数据写到response的buffer数组中
             byte[] buffer = new byte[1024];
             int b = 0;
             while ((b = fis.read(buffer)) != -1) {
