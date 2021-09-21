@@ -50,4 +50,8 @@ public class DiscussPostService {
     public DiscussPost findDiscussPostById(int id) {
         return discussPostMapper.selectDiscussPostById(id);
     }
+
+    public void updateCommentCount(int id, int commentCount) {
+        discussPostMapper.updateCommentCount(id, commentCount);
+    }
 }
