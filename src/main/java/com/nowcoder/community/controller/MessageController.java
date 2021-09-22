@@ -129,7 +129,6 @@ public class MessageController {
         if (target == null) {
             return CommunityUtil.getJSONString(1, "目标用户不存在");
         }
-        Integer.valueOf("abc");
         Message message = new Message();
         message.setFromId(hostHolder.getUser().getId());
         message.setToId(target.getId());
