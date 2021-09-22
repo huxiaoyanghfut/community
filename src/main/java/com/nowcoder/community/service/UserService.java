@@ -57,6 +57,10 @@ public class UserService implements CommunityConstant{
         return userMapper.selectById(id);
     }
 
+    public User findUserByName(String username) {
+        return userMapper.selectByName(username);
+    }
+
     public int updateHeader(int userId, String headerUrl) {
         return userMapper.updateHeader(userId, headerUrl);
     }
