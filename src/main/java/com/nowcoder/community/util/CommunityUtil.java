@@ -31,6 +31,7 @@ public class CommunityUtil {
         return DigestUtils.md5DigestAsHex(key.getBytes());
     }
     //封装json工具，将请求或响应中的数据封装成json对象给浏览器解析
+    //将JSON对象序列化成字符串后传输给浏览器，浏览器通过传入的字符串解析出json格式的数据
     public static String getJSONString(int code, String msg, Map<String,Object> map){
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("code",code);
