@@ -39,7 +39,7 @@ public class DiscussPostService {
             throw new IllegalArgumentException("参数不能为空！");
         }
         //帖子文本过滤掉html标记
-        discussPost.setTitle(HtmlUtils.htmlEscape(discussPost.getTitle()));
+        discussPost.setTitle(HtmlUtils.htmlEscape(discussPost.        getTitle()));
         discussPost.setContent(HtmlUtils.htmlEscape(discussPost.getContent()));
         //过滤敏感词
         discussPost.setTitle(sensitiveFilter.filter(discussPost.getTitle()));
