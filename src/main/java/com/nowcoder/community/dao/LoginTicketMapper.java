@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.*;
  * @date: 2021/09/16 15:34
  */
 @Mapper
+@Deprecated
 public interface LoginTicketMapper {
     @Select({
             "select id, user_Id, ticket, status, expired ",
