@@ -48,12 +48,12 @@ public interface CommunityConstant {
     /**
      * 主题类型: 赞
      */
-    String TOPIC_LIKE = "comment";
+    String TOPIC_LIKE = "like";
 
     /**
      * 主题类型: 关注
      */
-    String TOPIC_FOLLOW = "comment";
+    String TOPIC_FOLLOW = "follow";
     /**
      * 系统用户ID
      */

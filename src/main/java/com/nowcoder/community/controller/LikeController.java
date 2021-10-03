@@ -48,7 +48,7 @@ public class LikeController implements CommunityConstant {
             Event event = new Event()
                     .setTopic(TOPIC_LIKE)
                     .setUserId(user.getId())
-                    .setEntityType(entityId)
+                    .setEntityType(entityType)
                     .setEntityId(entityId)
                     .setEntityUserId(entityUserId)
                     .setData("postId", postId);
