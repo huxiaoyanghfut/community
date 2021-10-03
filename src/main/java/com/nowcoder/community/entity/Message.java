@@ -38,7 +38,7 @@ public class Message {
         return toId;
     }
 
-    public void setToId(int toId) {
+    public  void setToId(int toId) {
         this.toId = toId;
     }
 
