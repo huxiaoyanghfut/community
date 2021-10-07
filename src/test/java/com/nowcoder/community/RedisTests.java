@@ -33,7 +33,6 @@ public class RedisTests {
     public void testStrings() {
         String redisKey = "test:count";
         redisTemplate.opsForValue().set(redisKey, 1);
-
         System.out.println(redisTemplate.opsForValue().get(redisKey));
         System.out.println(redisTemplate.opsForValue().increment(redisKey));
         System.out.println(redisTemplate.opsForValue().decrement(redisKey));
@@ -62,9 +61,9 @@ public class RedisTests {
         System.out.println(redisTemplate.opsForList().index(redisKey, 0));
         System.out.println(redisTemplate.opsForList().range(redisKey, 0, 2));
 
-        System.out.println(redisTemplate.opsForList().rightPop(redisKey));
-        System.out.println(redisTemplate.opsForList().leftPop(redisKey));
-        System.out.println(redisTemplate.opsForList().leftPop(redisKey));
+        //System.out.println(redisTemplate.opsForList().rightPop(redisKey));
+        //System.out.println(redisTemplate.opsForList().leftPop(redisKey));
+        //System.out.println(redisTemplate.opsForList().leftPop(redisKey));
     }
 
     @Test

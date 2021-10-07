@@ -10,11 +10,15 @@ package com.nowcoder.community.util;
 
 public class RedisKeyUtil {
     private static final String SPLIT = ":";
+    //点赞（用户频繁访问的功能）
     private static final String PREFIX_ENTITY_LIKE = "like:entity";
     private static final String PREFIX_USER_LIKE = "like:user";
+    //关注（用户频繁访问的操作）
     private static final String PREFIX_FOLLOWEE = "followee";
     private static final String PREFIX_FOLLOWER = "follower";
+    //验证码（频繁访问，有时效性）
     private static final String PREFIX_KAPTCHA = "kaptcha";
+    //登录凭证（有时效性）
     private static final String PREFIX_TICKET = "ticket";
     private static final String PREFIX_USER = "user";
 

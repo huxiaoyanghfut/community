@@ -19,16 +19,8 @@ import org.springframework.stereotype.Service;
 public class LikeService {
     @Autowired
     private RedisTemplate redisTemplate;
-
     //点赞
     public void like(int userId, int entityType, int entityId, int entityUserId) {
-        //String entityLikeKey = RedisKeyUtil.getEntityLikeKey(entityType, entityId);
-        //boolean isMember = redisTemplate.opsForSet().isMember(entityLikeKey, userId);
-        //if (isMember) {
-        //    redisTemplate.opsForSet().remove(entityLikeKey, userId);
-        //}else{
-        //    redisTemplate.opsForSet().add(entityLikeKey, userId);
-        //}
         //重构点赞功能，将点赞和用户收到赞操作捆绑为一个事务
         redisTemplate.execute(new SessionCallback() {
             @Override
@@ -46,11 +38,9 @@ public class LikeService {
                 } else {
                     operations.opsForSet().add(entityLikeKey, userId);
                     operations.opsForValue().increment(userLikeKey);
-
                 }
                 //提交事务
                 return operations.exec();
-
             }
         });
     }

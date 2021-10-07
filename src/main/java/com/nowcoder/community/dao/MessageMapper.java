@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface MessageMapper {
 
-    // 查询当前用户的会话列表,针对每个会话只返回一条最新的私信.
+    // 查询当前用户的列表,针对每个会话只返回一条最新的私信.
     List<Message> selectConversations(int userId, int offset, int limit);
 
     // 查询当前用户的会话数量.
@@ -26,7 +26,7 @@ public interface MessageMapper {
     //新增消息
     int insertMessage(Message message);
 
-    //修改消息状态（将会话中未读消息列表状态设为已读,
+    //修改消息状态（将私信中未读消息列表状态设为已读,
     // ids为未读状态消息的id）
     int updateStatus(List<Integer> ids, int status);
 
