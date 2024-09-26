@@ -5,6 +5,7 @@ import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.Event;
 import com.nowcoder.community.entity.Message;
 import com.nowcoder.community.service.DiscussPostService;
+//import com.nowcoder.community.service.ElasticSearchService;
 import com.nowcoder.community.service.ElasticSearchService;
 import com.nowcoder.community.service.MessageService;
 import com.nowcoder.community.util.CommunityConstant;
@@ -27,14 +28,17 @@ import java.util.Map;
  * @Description: TODO
  * @date: 2021/10/03 9:54
  */
-@Component
+//@Component
 public class EventConsumer implements CommunityConstant {
 
     private static final Logger logger = LoggerFactory.getLogger(EventConsumer.class);
+
     @Autowired
     private MessageService messageService;
+
     @Autowired
     private DiscussPostService discussPostService;
+
     @Autowired
     private ElasticSearchService elasticSearchService;
 
@@ -69,7 +73,6 @@ public class EventConsumer implements CommunityConstant {
                 content.put(entry.getKey(), entry.getValue());
             }
         }
-
         message.setContent(JSONObject.toJSONString(content));
         messageService.addMessage(message);
     }

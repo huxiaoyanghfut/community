@@ -1,6 +1,7 @@
 package com.nowcoder.community;
 
 import com.nowcoder.community.dao.DiscussPostMapper;
+//import com.nowcoder.community.dao.elasticsearch.DiscussPostRepository;
 import com.nowcoder.community.dao.elasticsearch.DiscussPostRepository;
 import com.nowcoder.community.entity.DiscussPost;
 import org.elasticsearch.action.search.SearchResponse;
@@ -107,7 +108,4 @@ public class ElasticsearchTest {
             System.out.println(discussPostSearchHit.getHighlightFields());
         }
     }
-
-
-
 }

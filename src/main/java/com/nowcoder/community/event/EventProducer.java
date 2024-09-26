@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class EventProducer {
+
     @Autowired
     private KafkaTemplate kafkaTemplate;
 

@@ -55,7 +55,6 @@ public class ElasticSearchService {
                 .withHighlightFields(
                         new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>"),
                         new HighlightBuilder.Field("content").preTags("<em>").postTags("</em>")
-
                 ).build();
         // elasticTemplate.queryForPage(searchQuery, class, SearchResultMapper)
         // 底层获取得到了高亮显示的值, 但是没有返回。

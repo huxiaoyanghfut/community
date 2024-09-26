@@ -55,7 +55,7 @@ class Consumer implements Runnable {
     @Override
     public void run() {
             try {
-                while (true) {
+                while (true) {//不定期消费
                     Thread.sleep(new Random().nextInt(1000));
                     queue.take();
                     System.out.println(Thread.currentThread() + "消费：" + queue.size());
